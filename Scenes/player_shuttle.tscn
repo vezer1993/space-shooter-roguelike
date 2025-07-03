@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68kfpa6h3bsw"]
+
+[ext_resource type="Script" path="res://Scripts/playershuttle.gd" id="1_f62u2"]
+[ext_resource type="Texture2D" uid="uid://ckotjtl0u0e4k" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="2_skepr"]
+
+[node name="playerShuttle" type="CharacterBody2D"]
+script = ExtResource("1_f62u2")
+
+[node name="MainShip-Base-FullHealth" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_skepr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 1.25625)
+scale = Vector2(1, 0.8125)
+polygon = PackedVector2Array(-15, 3.37692, -5, -7.7, 0, -18.7769, 5, -7.7, 15, 3.37692, 15, 10.7615, 3, 4.60769, 3, 13.2231, 0, 10.7615, -3, 13.2231, -3, 4.60769, -15, 10.7615)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi43y2th2hxu7"]
+[gd_scene load_steps=4 format=3 uid="uid://bi43y2th2hxu7"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
 [ext_resource type="Texture2D" uid="uid://bx7d8ugja2e01" path="res://Art/Backgrounds/space-background2.png" id="2_gj424"]
+[ext_resource type="PackedScene" uid="uid://b68kfpa6h3bsw" path="res://Scenes/player_shuttle.tscn" id="3_bskt7"]
 
 [node name="Game" type="Node2D"]
 
@@ -26,3 +27,6 @@ scale = Vector2(1.58514, 1.6537)
 texture = ExtResource("2_gj424")
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="playerShuttle" parent="." instance=ExtResource("3_bskt7")]
+position = Vector2(541, 454)
