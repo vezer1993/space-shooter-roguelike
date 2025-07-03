@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi43y2th2hxu7"]
+
+[ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
+[ext_resource type="Texture2D" uid="uid://bx7d8ugja2e01" path="res://Art/Backgrounds/space-background2.png" id="2_gj424"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Background" type="Node" parent="Camera2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D/Background"]
+script = ExtResource("1_qgja8")
+scroll_speed = 3.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/Background/ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(50, 50)
+motion_mirroring = Vector2(0, 1440)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Background/ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(576, 304.004)
+scale = Vector2(1.58514, 1.6537)
+texture = ExtResource("2_gj424")
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
