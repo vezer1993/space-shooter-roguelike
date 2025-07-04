@@ -20,12 +20,18 @@ func _process(delta):
 		
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var horizontal_direction := Input.get_axis("ui_left", "ui_right")
+	var vertical_direction := Input.get_axis("ui_up", "ui_down")
 	
-	if direction != 0:
-		velocity.x = direction * SPEED
+	if horizontal_direction != 0:
+		velocity.x = horizontal_direction * SPEED
 	else:
 		velocity.x = 0.0  # Instant stop for crispness
-
-	velocity.y = 0.0  # Lock vertical movement
+	
+	# Set vertical velocity
+	if vertical_direction != 0:
+		velocity.y = vertical_direction * SPEED
+	else:
+		velocity.y = 0.0  # Instant stop for crispness
+		
 	move_and_slide()
