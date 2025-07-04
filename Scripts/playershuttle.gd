@@ -8,6 +8,16 @@ func _ready():
 
 	# Connect the health_changed signal to the HUD
 	health_component.health_changed.connect(hud.update_health)
+	health_component.health_max_changed.connect(hud.update_max_health)
+	
+	
+#TESTING
+func _process(delta):
+	if Input.is_action_just_pressed("ui_select"):  # e.g. spacebar
+		$HealthShield.increase_max_hp(25)
+	if Input.is_action_just_pressed("fire"):  # e.g. spacebar
+		$HealthShield.apply_damage(10)
+		
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
