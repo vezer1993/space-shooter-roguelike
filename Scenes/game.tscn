@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi43y2th2hxu7"]
+[gd_scene load_steps=8 format=3 uid="uid://bi43y2th2hxu7"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
 [ext_resource type="Texture2D" uid="uid://bx7d8ugja2e01" path="res://Art/Backgrounds/space-background2.png" id="2_gj424"]
 [ext_resource type="PackedScene" uid="uid://b68kfpa6h3bsw" path="res://Scenes/player_shuttle.tscn" id="3_bskt7"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="4_ebml8"]
+[ext_resource type="Texture2D" uid="uid://godrmtcv2dhq" path="res://Art/HP & SHIELD/hp_bar_frame.png" id="5_vik1x"]
+[ext_resource type="Texture2D" uid="uid://cy4idk1urdl8p" path="res://Art/HP & SHIELD/hp_bar_fill_green.png" id="6_8uimc"]
+[ext_resource type="Texture2D" uid="uid://brpd8bywddyh" path="res://Art/HP & SHIELD/hp_bar_fill_red.png" id="7_arbu2"]
 
 [node name="Game" type="Node2D"]
 
+[node name="playerShuttle" parent="." instance=ExtResource("3_bskt7")]
+position = Vector2(541, 454)
+scale = Vector2(1.5, 1.5)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -3.05176e-05)
 anchor_mode = 0
 
 [node name="Background" type="Node" parent="Camera2D"]
@@ -28,5 +37,63 @@ texture = ExtResource("2_gj424")
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1080)
 
-[node name="playerShuttle" parent="." instance=ExtResource("3_bskt7")]
-position = Vector2(541, 454)
+[node name="HUD" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("4_ebml8")
+
+[node name="VBoxContainer" type="Control" parent="Camera2D/HUD"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -98.0
+offset_right = 400.0
+offset_bottom = 22.0
+grow_vertical = 0
+
+[node name="HPBar" type="TextureProgressBar" parent="Camera2D/HUD/VBoxContainer"]
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 2
+offset_left = 50.0
+offset_right = 250.0
+offset_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_over = ExtResource("5_vik1x")
+texture_progress = ExtResource("6_8uimc")
+
+[node name="ValueLabel" type="Label" parent="Camera2D/HUD/VBoxContainer/HPBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "DW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPBarRed" type="TextureProgressBar" parent="Camera2D/HUD/VBoxContainer"]
+layout_mode = 2
+offset_left = 50.0
+offset_right = 250.0
+offset_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_progress = ExtResource("7_arbu2")
+
+[node name="SHIELD" type="TextureProgressBar" parent="Camera2D/HUD/VBoxContainer"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 400.0
+offset_bottom = 49.0
+value = 100.0

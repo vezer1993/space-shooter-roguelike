@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b68kfpa6h3bsw"]
+[gd_scene load_steps=4 format=3 uid="uid://b68kfpa6h3bsw"]
 
 [ext_resource type="Script" path="res://Scripts/playershuttle.gd" id="1_f62u2"]
 [ext_resource type="Texture2D" uid="uid://ckotjtl0u0e4k" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="2_skepr"]
+[ext_resource type="PackedScene" uid="uid://c5s7rdws41754" path="res://Scenes/Components/HP & Shield/hp.tscn" id="3_pnq0d"]
 
 [node name="playerShuttle" type="CharacterBody2D"]
 script = ExtResource("1_f62u2")
@@ -14,3 +15,6 @@ texture = ExtResource("2_skepr")
 position = Vector2(0, 1.25625)
 scale = Vector2(1, 0.8125)
 polygon = PackedVector2Array(-15, 3.37692, -5, -7.7, 0, -18.7769, 5, -7.7, 15, 3.37692, 15, 10.7615, 3, 4.60769, 3, 13.2231, 0, 10.7615, -3, 13.2231, -3, 4.60769, -15, 10.7615)
+
+[node name="HealthShield" parent="." instance=ExtResource("3_pnq0d")]
+unique_name_in_owner = true

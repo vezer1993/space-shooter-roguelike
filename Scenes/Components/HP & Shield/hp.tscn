@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5s7rdws41754"]
+
+[ext_resource type="Script" path="res://Scenes/Components/HP & Shield/hp.gd" id="1_xwrob"]
+
+[node name="HP" type="Node2D"]
+script = ExtResource("1_xwrob")
