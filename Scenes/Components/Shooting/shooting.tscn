@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuxwgqrquku47"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Shooting/shooting.gd" id="1_isja6"]
+
+[node name="ShootingComponent" type="Node2D"]
+script = ExtResource("1_isja6")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]

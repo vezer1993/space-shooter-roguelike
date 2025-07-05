@@ -23,5 +23,4 @@ unique_name_in_owner = true
 
 [node name="ShootingComponent" parent="." instance=ExtResource("4_48uih")]
 unique_name_in_owner = true
-position = Vector2(0, -17)
 bullet_scene = ExtResource("5_gwyey")

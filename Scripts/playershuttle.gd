@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED := 300.0
+var is_flipped = false #state za rotaciju shuttla
 
 func _ready():
 	var hud = get_node("../Camera2D/HUD")  # Or wherever your HUD is
@@ -16,7 +17,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):  # e.g. spacebar
 		$HealthShield.increase_max_hp(25)
 	if Input.is_action_just_pressed("fire"):  # e.g. spacebar
-		$HealthShield.apply_damage(10)
+		$"%ShootingComponent".shoot()
+	if Input.is_action_just_pressed("rotate"):
+		rotate_shuttle()
 		
 
 func _physics_process(delta: float) -> void:
@@ -35,3 +38,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0  # Instant stop for crispness
 		
 	move_and_slide()
+	
+func rotate_shuttle():
+	if not is_flipped:
+		rotation = PI
+		is_flipped = true
+	else:
+		rotation = 0
+		is_flipped = false
