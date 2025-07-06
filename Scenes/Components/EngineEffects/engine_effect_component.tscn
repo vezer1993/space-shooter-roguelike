@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c36gqnh8ybuwn"]
+
+[ext_resource type="Script" path="res://Scenes/Components/EngineEffects/engine_effect_component.gd" id="1_ho372"]
+[ext_resource type="Texture2D" uid="uid://b0roil01ld55a" path="res://Art/playerShutlle/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="2_bf0qi"]
+[ext_resource type="Texture2D" uid="uid://cxgi33g2wxick" path="res://Art/playerShutlle/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Powering.png" id="3_l7l3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mon0f"]
+atlas = ExtResource("2_bf0qi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6gom"]
+atlas = ExtResource("2_bf0qi")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egib5"]
+atlas = ExtResource("2_bf0qi")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hja6b"]
+atlas = ExtResource("3_l7l3y")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqpex"]
+atlas = ExtResource("3_l7l3y")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jva5x"]
+atlas = ExtResource("3_l7l3y")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_570mb"]
+atlas = ExtResource("3_l7l3y")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cbar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mon0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6gom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egib5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hja6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqpex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jva5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_570mb")
+}],
+"loop": true,
+"name": &"Thrust",
+"speed": 7.0
+}]
+
+[node name="EngineEffectComponent" type="Node2D"]
+script = ExtResource("1_ho372")
+idle_animation = "Idle"
+thrust_animation = "Thrust"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1cbar")
+animation = &"Thrust"
+autoplay = "Idle"
+frame_progress = 0.193968
