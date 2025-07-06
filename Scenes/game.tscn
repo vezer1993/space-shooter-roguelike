@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi43y2th2hxu7"]
+[gd_scene load_steps=10 format=3 uid="uid://bi43y2th2hxu7"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
+[ext_resource type="PackedScene" uid="uid://b21j2qgh8a61t" path="res://Scenes/Components/Enemies/enemy_spawner.tscn" id="1_vl2dv"]
 [ext_resource type="Texture2D" uid="uid://bx7d8ugja2e01" path="res://Art/Backgrounds/space-background2.png" id="2_gj424"]
 [ext_resource type="PackedScene" uid="uid://b68kfpa6h3bsw" path="res://Scenes/player_shuttle.tscn" id="3_bskt7"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="4_ebml8"]
 [ext_resource type="Texture2D" uid="uid://godrmtcv2dhq" path="res://Art/HP & SHIELD/hp_bar_frame.png" id="5_vik1x"]
 [ext_resource type="Texture2D" uid="uid://cy4idk1urdl8p" path="res://Art/HP & SHIELD/hp_bar_fill_green.png" id="6_8uimc"]
 [ext_resource type="Texture2D" uid="uid://brpd8bywddyh" path="res://Art/HP & SHIELD/hp_bar_fill_red.png" id="7_arbu2"]
+[ext_resource type="PackedScene" uid="uid://br5in0wjpa45q" path="res://Scenes/Components/Enemies/types/enemy_template.tscn" id="8_jm10d"]
 
 [node name="Game" type="Node2D"]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_vl2dv")]
+enemy_scenes = Array[PackedScene]([ExtResource("8_jm10d")])
+enabled = true
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [node name="playerShuttle" parent="." instance=ExtResource("3_bskt7")]
 position = Vector2(541, 454)
