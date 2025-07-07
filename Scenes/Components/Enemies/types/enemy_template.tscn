@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://br5in0wjpa45q"]
 
 [ext_resource type="Script" path="res://Scenes/Components/Enemies/types/enemy_template.gd" id="1_37ewh"]
-[ext_resource type="Texture2D" uid="uid://bcj77tpdrjgdq" path="res://Art/playerShutlle/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="1_bdhp1"]
+[ext_resource type="Texture2D" uid="uid://q43xb4y1kpeq" path="res://Art/Enemies/enemy_1.png" id="2_chunl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4ayy"]
 radius = 13.0
@@ -12,7 +12,7 @@ collision_mask = 5
 script = ExtResource("1_37ewh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bdhp1")
+texture = ExtResource("2_chunl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)

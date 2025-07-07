@@ -11,8 +11,9 @@ func _ready():
 	enemy_container = get_node("../Enemies")
 	
 	spawn_list = [
-		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(0, 0, 400, 50) },
-		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(10, 10, 400, 50) },
+		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(100, -80, 600, 50) },
+		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(20, -80, 600, 50) },
+		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(150, -80, 600, 50) },
 	]
 	
 	if(enabled):

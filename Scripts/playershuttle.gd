@@ -42,26 +42,24 @@ func _process(delta):
 			dodge(horizontal_direction)
 
 func _physics_process(delta: float) -> void:
-	var horizontal_direction := Input.get_axis("move_left", "move_right")
-	var vertical_direction := Input.get_axis("move_forward", "move_down")
-	
-	if horizontal_direction != 0:
-		velocity.x = horizontal_direction * SPEED
+	var direction := Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_forward", "move_down")
+	)
+
+	if direction != Vector2.ZERO:
+		direction = direction.normalized()
+		velocity = direction * SPEED
 	else:
-		velocity.x = 0.0  # Instant stop for crispness
-	
-	# Set vertical velocity
-	if vertical_direction != 0:
-		velocity.y = vertical_direction * SPEED
-	else:
-		velocity.y = 0.0  # Instant stop for crispness
-		
+		velocity = Vector2.ZERO
+
 	move_and_slide()
-	
+
 	if velocity.length() > 0:
 		$EngineEffectComponent.play_thrust()
 	else:
-		$EngineEffectComponent.play_idle() 
+		$EngineEffectComponent.play_idle()
+
 	
 func rotate_shuttle():
 	if not is_flipped:
