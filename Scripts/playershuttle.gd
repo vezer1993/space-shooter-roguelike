@@ -22,8 +22,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):  # e.g. spacebar
 		$HealthShield.increase_max_hp(25)
-	if Input.is_action_just_pressed("fire"):  # e.g. spacebar
-		$"%ShootingComponent".shoot()
 	if Input.is_action_just_pressed("rotate"):
 		rotate_shuttle()
 		

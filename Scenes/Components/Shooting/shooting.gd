@@ -10,14 +10,14 @@ var time_since_last_shot: float = 0.0
 
 func _process(delta):
 	time_since_last_shot += delta
+	
+	if can_shoot():
+		shoot()
 
 func can_shoot() -> bool:
 	return time_since_last_shot >= fire_rate
 
 func shoot():
-	if not can_shoot():
-		return false
-
 	# Create bullet
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = $BulletSpawnPoint.global_position
