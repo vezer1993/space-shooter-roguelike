@@ -1,17 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://b68kfpa6h3bsw"]
+[gd_scene load_steps=10 format=3 uid="uid://b68kfpa6h3bsw"]
 
 [ext_resource type="Script" path="res://Scripts/playershuttle.gd" id="1_f62u2"]
 [ext_resource type="Texture2D" uid="uid://ckotjtl0u0e4k" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="2_skepr"]
+[ext_resource type="Texture2D" uid="uid://b4hwractf07q0" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="3_0bo8j"]
 [ext_resource type="PackedScene" uid="uid://c5s7rdws41754" path="res://Scenes/Components/HP & Shield/hp.tscn" id="3_pnq0d"]
 [ext_resource type="PackedScene" uid="uid://cuxwgqrquku47" path="res://Scenes/Components/Shooting/shooting.tscn" id="4_48uih"]
+[ext_resource type="Texture2D" uid="uid://bivoc504uqjl5" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="4_c7kv8"]
 [ext_resource type="PackedScene" uid="uid://8lcjp1nf5k7k" path="res://Scenes/Components/Shooting/Bullet type/regular_bullet.tscn" id="5_gwyey"]
+[ext_resource type="Texture2D" uid="uid://6xqfjscmxomb" path="res://Art/playerShutlle/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="5_kidtg"]
 [ext_resource type="PackedScene" uid="uid://c36gqnh8ybuwn" path="res://Scenes/Components/EngineEffects/engine_effect_component.tscn" id="6_ci51y"]
 
 [node name="playerShuttle" type="CharacterBody2D"]
 collision_mask = 10
 script = ExtResource("1_f62u2")
+full_health_texture = ExtResource("2_skepr")
+slight_damaged_texture = ExtResource("3_0bo8j")
+damaged_texture = ExtResource("4_c7kv8")
+very_damaged_texture = ExtResource("5_kidtg")
 
-[node name="MainShip-Base-FullHealth" type="Sprite2D" parent="."]
+[node name="MainShip-Base" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 texture = ExtResource("2_skepr")
 

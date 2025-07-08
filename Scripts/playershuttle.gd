@@ -9,6 +9,12 @@ var dodge_cooldown_timer: float = 0.0
 var can_dodge: bool = true
 var is_dodging: bool = false   
 
+@export var full_health_texture: Texture2D
+@export var slight_damaged_texture: Texture2D
+@export var damaged_texture: Texture2D
+@export var very_damaged_texture: Texture2D
+
+
 func _ready():
 	var hud = get_node("../Camera2D/HUD")  # Or wherever your HUD is
 	var health_component = $HealthShield  # Assuming this script is on the player
@@ -16,6 +22,7 @@ func _ready():
 	# Connect the health_changed signal to the HUD
 	health_component.health_changed.connect(hud.update_health)
 	health_component.health_max_changed.connect(hud.update_max_health)
+	health_component.health_percentage_changed.connect(_on_health_percentage_changed)
 	
 	
 #TESTING
@@ -95,7 +102,7 @@ func dodge(direction: float):
 
 func create_sliding_afterimages(start_pos: Vector2, end_pos: Vector2):
 	var afterimage_scene = preload("res://Scenes/Components/EngineEffects/after_image.tscn")
-	var sprite = $"MainShip-Base-FullHealth"
+	var sprite = $"MainShip-Base"
 	
 	# Create afterimages along the path
 	for i in range(5):
@@ -107,3 +114,14 @@ func create_sliding_afterimages(start_pos: Vector2, end_pos: Vector2):
 		afterimage.setup(sprite, 0.4 - (i * 0.1))
 		afterimage.global_position = afterimage_position
 	
+func _on_health_percentage_changed(percentage: float):
+	var sprite = $"MainShip-Base"
+	
+	if percentage > 0.8:  
+		sprite.texture = full_health_texture
+	elif percentage > 0.6:  
+		sprite.texture = slight_damaged_texture
+	elif percentage > 0.4:  
+		sprite.texture = damaged_texture
+	else:  # Below 30%
+		sprite.texture = very_damaged_texture

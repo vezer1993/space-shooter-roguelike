@@ -12,6 +12,7 @@ var time_since_last_hit: float = 0.0
 signal died
 signal health_changed(hp, max_hp, shield, max_shield)
 signal health_max_changed(hp, max_hp)
+signal health_percentage_changed(percentage)
 
 func _ready():
 	hp = max_hp
@@ -43,6 +44,11 @@ func apply_damage(amount: int) -> void:
 		hp = max(hp - amount, 0)
 
 	emit_signal("health_changed", hp, max_hp)
+	emit_health_percentage()
 
 	if hp <= 0:
 		emit_signal("died")
+
+func emit_health_percentage():
+	var percentage = float(hp) / float(max_hp)
+	emit_signal("health_percentage_changed", percentage)
