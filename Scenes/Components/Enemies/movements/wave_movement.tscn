@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxwr76p80otr6"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Enemies/movements/wave_movement.gd" id="1_7hvr8"]
+
+[node name="wave_movement" type="Node2D"]
+script = ExtResource("1_7hvr8")

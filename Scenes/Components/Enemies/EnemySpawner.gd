@@ -1,22 +1,22 @@
 extends Node2D
 
-@export var enemy_scenes: Array[PackedScene]  # Drag & drop enemy scenes in the editor
-@export var spawn_list: Array[Dictionary]     # Describes waves/spawns
-@export var enabled: bool
+@export var enemy_scenes: Array[PackedScene]
+@export var enabled: bool = true
 
-
-var enemy_container
+var spawn_list: Array[Dictionary] = []
+var enemy_container: Node
 
 func _ready():
 	enemy_container = get_node("../Enemies")
-	
+
 	spawn_list = [
-		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(100, -80, 600, 50) },
-		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(20, -80, 600, 50) },
-		{ "enemy": 0, "count": 1, "delay": 2.5, "area": Rect2(150, -80, 600, 50) },
+		{ "enemy": 0, "count": 1, "delay": 1.0, "side": "top" },
+		{ "enemy": 0, "count": 1, "delay": 2.5, "side": "left" },
+		{ "enemy": 0, "count": 1, "delay": 2.5, "side": "right" },
+		{ "enemy": 0, "count": 1, "delay": 4.0, "side": "random" }
 	]
-	
-	if(enabled):
+
+	if enabled:
 		start_spawning()
 
 func start_spawning():
@@ -29,7 +29,8 @@ func _process_spawn_list():
 
 		var scene_idx: int = spawn.get("enemy", 0)
 		var count: int = spawn.get("count", 1)
-		var area: Rect2 = spawn.get("area", Rect2(200, -100, 400, 50))	
+		var side: String = spawn.get("side", "top")
+		var area := get_spawn_area(side)
 
 		for i in count:
 			var enemy = enemy_scenes[scene_idx].instantiate()
@@ -39,3 +40,25 @@ func _process_spawn_list():
 			)
 			enemy.global_position = pos
 			enemy_container.add_child(enemy)
+
+func get_spawn_area(side: String) -> Rect2:
+	var screen_size = get_viewport().get_visible_rect().size
+	var y := -80  # consistent spawn just above screen
+	var height := 50
+	
+	match side:
+		"top":
+			var x := randf_range(screen_size.x * 0.4, screen_size.x * 0.6)
+			return Rect2(x, y, 1, height)  # single point
+		"left":
+			var x := randf_range(screen_size.x * -0.1, screen_size.x * 0.4)
+			return Rect2(x, y, 1, height)
+		"right":
+			var x := randf_range(screen_size.x * 0.6, screen_size.x * 0.9)
+			return Rect2(x, y, 1, height)
+		"random":
+			var sides = ["top", "left", "right"]
+			return get_spawn_area(sides[randi() % sides.size()])
+		_:
+			var x := randf_range(screen_size.x * 0.4, screen_size.x * 0.6)
+			return Rect2(x, y, 1, height)

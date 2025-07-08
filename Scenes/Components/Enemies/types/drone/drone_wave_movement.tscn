@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bla5do36sugic"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Enemies/types/enemy.gd" id="1_3bpel"]
+[ext_resource type="Texture2D" uid="uid://q43xb4y1kpeq" path="res://Art/Enemies/enemy_1.png" id="2_583y6"]
+[ext_resource type="PackedScene" uid="uid://cfd4qhx203iyv" path="res://Art/Enemies/HP/hp.tscn" id="3_6npld"]
+[ext_resource type="PackedScene" uid="uid://bxwr76p80otr6" path="res://Scenes/Components/Enemies/movements/wave_movement.tscn" id="4_65jdh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4ayy"]
+radius = 13.0
+
+[node name="drone_wave_movement" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_3bpel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_583y6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u4ayy")
+
+[node name="HP" parent="." instance=ExtResource("3_6npld")]
+max_hp = 20
+
+[node name="wave_movement" parent="." instance=ExtResource("4_65jdh")]
