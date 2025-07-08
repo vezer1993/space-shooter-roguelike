@@ -57,6 +57,7 @@ dodge={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemise"
 2d_physics/layer_3="PlayerBullets"
+2d_physics/layer_4="powerup"
 
 [rendering]
 

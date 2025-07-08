@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bi43y2th2hxu7"]
+[gd_scene load_steps=11 format=3 uid="uid://bi43y2th2hxu7"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
 [ext_resource type="PackedScene" uid="uid://b21j2qgh8a61t" path="res://Scenes/Components/Enemies/enemy_spawner.tscn" id="1_vl2dv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://godrmtcv2dhq" path="res://Art/HP & SHIELD/hp_bar_frame.png" id="5_vik1x"]
 [ext_resource type="Texture2D" uid="uid://cy4idk1urdl8p" path="res://Art/HP & SHIELD/hp_bar_fill_green.png" id="6_8uimc"]
 [ext_resource type="Texture2D" uid="uid://brpd8bywddyh" path="res://Art/HP & SHIELD/hp_bar_fill_red.png" id="7_arbu2"]
+[ext_resource type="PackedScene" uid="uid://d0kdjmwt1u5oq" path="res://Scenes/Components/PowerUP's/powerup.tscn" id="10_b5i1f"]
 
 [node name="Game" type="Node2D"]
 
@@ -108,3 +109,6 @@ offset_top = 48.0
 offset_right = 400.0
 offset_bottom = 49.0
 value = 100.0
+
+[node name="Powerup" parent="." instance=ExtResource("10_b5i1f")]
+position = Vector2(381, 184)
