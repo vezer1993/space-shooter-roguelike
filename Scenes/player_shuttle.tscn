@@ -18,6 +18,10 @@ slight_damaged_texture = ExtResource("3_0bo8j")
 damaged_texture = ExtResource("4_c7kv8")
 very_damaged_texture = ExtResource("5_kidtg")
 
+[node name="EngineEffectComponent" parent="." instance=ExtResource("6_ci51y")]
+unique_name_in_owner = true
+position = Vector2(0, -2)
+
 [node name="MainShip-Base" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 texture = ExtResource("2_skepr")
@@ -34,7 +38,3 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(0, -17)
 bullet_scene = ExtResource("5_gwyey")
-
-[node name="EngineEffectComponent" parent="." instance=ExtResource("6_ci51y")]
-unique_name_in_owner = true
-position = Vector2(0, -2)
