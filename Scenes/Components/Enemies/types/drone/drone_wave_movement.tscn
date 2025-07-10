@@ -23,3 +23,5 @@ shape = SubResource("CircleShape2D_u4ayy")
 max_hp = 20
 
 [node name="wave_movement" parent="." instance=ExtResource("4_65jdh")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
