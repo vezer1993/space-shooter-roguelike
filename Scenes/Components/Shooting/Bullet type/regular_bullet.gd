@@ -1,30 +1,31 @@
-extends CharacterBody2D
+extends Area2D
 
 var speed: float = 500.0
-var direction: Vector2 = Vector2.RIGHT
-var lifetime: float = 10.0  # Remove after 5 seconds
+var direction: Vector2 = Vector2.UP
+var lifetime: float = 10.0
 var time_alive: float = 0.0
 var damage: int = 10
 
 func _ready():
-	$AnimatedSprite2D.play()  # Start the animation
-	velocity = direction * speed
+	$AnimatedSprite2D.play()
 
 func _physics_process(delta):
-	# Move the bullet
-	velocity = direction * speed
-	move_and_slide()
+	# Move the bullet manually
+	position += direction * speed * delta
 	
-	 # Track lifetime
+	# Track lifetime
 	time_alive += delta
 	if time_alive >= lifetime:
 		queue_free()
-		return
-	
-	# Check if bullet hit something
-	if get_slide_collision_count() > 0:
-		var collider = get_slide_collision(0).get_collider()
-		if collider.has_node("HP"):
-			collider.get_node("HP").apply_damage(damage)
-		# Hit something - destroy bullet
-		queue_free()
+
+func _on_area_entered(area):
+	# Hit an enemy (Area2D)
+	if area.has_node("HP"):
+		area.get_node("HP").apply_damage(damage)
+	queue_free()
+
+func _on_body_entered(body):
+	# Hit something else (CharacterBody2D, StaticBody2D, etc.)
+	if body.has_node("HP"):
+		body.get_node("HP").apply_damage(damage)
+	queue_free()
