@@ -29,7 +29,7 @@ func _process(delta):
 
 	get_parent().global_position = new_pos
 
-	# Auto-queue_free if off-screen bottom
+	# Auto-queue_free if off-screen bottomp
 	if new_pos.y > screen_size.y + 100:
 		get_parent().queue_free()
 

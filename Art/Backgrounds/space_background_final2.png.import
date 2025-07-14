@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx7d8ugja2e01"
-path="res://.godot/imported/space-background2.png-0759b356025f398a49218a2c09b5ac13.ctex"
+uid="uid://cf7klvykclwjb"
+path="res://.godot/imported/space_background_final2.png-2e7bb6659986588ad86e995abc34dff1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Backgrounds/space-background2.png"
-dest_files=["res://.godot/imported/space-background2.png-0759b356025f398a49218a2c09b5ac13.ctex"]
+source_file="res://Art/Backgrounds/space_background_final2.png"
+dest_files=["res://.godot/imported/space_background_final2.png-2e7bb6659986588ad86e995abc34dff1.ctex"]
 
 [params]
 

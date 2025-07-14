@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi43y2th2hxu7"]
+[gd_scene load_steps=13 format=3 uid="uid://bi43y2th2hxu7"]
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
 [ext_resource type="PackedScene" uid="uid://b21j2qgh8a61t" path="res://Scenes/Components/Enemies/enemy_spawner.tscn" id="1_vl2dv"]
-[ext_resource type="Texture2D" uid="uid://bx7d8ugja2e01" path="res://Art/Backgrounds/space-background2.png" id="2_gj424"]
 [ext_resource type="PackedScene" uid="uid://bla5do36sugic" path="res://Scenes/Components/Enemies/types/drone/drone_wave_movement.tscn" id="2_k245a"]
 [ext_resource type="PackedScene" uid="uid://b68kfpa6h3bsw" path="res://Scenes/player_shuttle.tscn" id="3_bskt7"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="4_ebml8"]
+[ext_resource type="Texture2D" uid="uid://cf7klvykclwjb" path="res://Art/Backgrounds/space_background_final2.png" id="5_akqch"]
 [ext_resource type="Texture2D" uid="uid://godrmtcv2dhq" path="res://Art/HP & SHIELD/hp_bar_frame.png" id="5_vik1x"]
 [ext_resource type="Texture2D" uid="uid://cy4idk1urdl8p" path="res://Art/HP & SHIELD/hp_bar_fill_green.png" id="6_8uimc"]
 [ext_resource type="Texture2D" uid="uid://brpd8bywddyh" path="res://Art/HP & SHIELD/hp_bar_fill_red.png" id="7_arbu2"]
 [ext_resource type="PackedScene" uid="uid://d0kdjmwt1u5oq" path="res://Scenes/Components/PowerUP's/powerup.tscn" id="10_b5i1f"]
+[ext_resource type="Texture2D" uid="uid://ddvo2u3ghxi0y" path="res://Art/Backgrounds/UI_background.png" id="10_jl3e3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfiw0"]
 
 [node name="Game" type="Node2D"]
 
@@ -35,20 +38,19 @@ scroll_speed = 3.0
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/Background/ParallaxBackground"]
 texture_repeat = 2
 motion_scale = Vector2(50, 50)
-motion_mirroring = Vector2(0, 1440)
+motion_mirroring = Vector2(0, 3000)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Background/ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
 position = Vector2(576, 304.004)
-scale = Vector2(1.58514, 1.6537)
-texture = ExtResource("2_gj424")
-region_enabled = true
+texture = ExtResource("5_akqch")
 region_rect = Rect2(0, 0, 1920, 1080)
 
 [node name="HUD" type="CanvasLayer" parent="Camera2D"]
 script = ExtResource("4_ebml8")
 
 [node name="VBoxContainer" type="Control" parent="Camera2D/HUD"]
+visible = false
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -109,6 +111,57 @@ offset_top = 48.0
 offset_right = 400.0
 offset_bottom = 49.0
 value = 100.0
+
+[node name="Control" type="Control" parent="Camera2D/HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Camera2D/HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/HUD/Control/HBoxContainer/Control"]
+material = SubResource("ShaderMaterial_rfiw0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_jl3e3")
+expand_mode = 4
+
+[node name="Game" type="AspectRatioContainer" parent="Camera2D/HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+ratio = 1.333
+
+[node name="Control2" type="Control" parent="Camera2D/HUD/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/HUD/Control/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_jl3e3")
+expand_mode = 4
 
 [node name="Powerup" parent="." instance=ExtResource("10_b5i1f")]
 position = Vector2(381, 184)
