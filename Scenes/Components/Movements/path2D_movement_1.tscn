@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://danyidjn7u4w4"]
+
+[ext_resource type="Curve2D" uid="uid://dvwlbaaa177pq" path="res://Scenes/Components/Movements/path2D_movement_1.tres" id="1_80qms"]
+
+[node name="Path2D" type="Path2D"]
+position = Vector2(-469.422, 14.5181)
+scale = Vector2(1.92793, 0.952629)
+curve = ExtResource("1_80qms")

@@ -2,6 +2,7 @@ extends Node2D
 
 @export var enemy_scenes: Array[PackedScene]
 @export var enabled: bool = true
+@export var path_resources: Array[Curve2D]  # preload different curves
 
 var spawn_list: Array[Dictionary] = []
 var enemy_container: Node
@@ -10,10 +11,10 @@ func _ready():
 	enemy_container = get_node("../Enemies")
 
 	spawn_list = [
-		{ "enemy": 0, "count": 1, "delay": 1.0, "side": "top" },
-		{ "enemy": 0, "count": 1, "delay": 2.5, "side": "left" },
-		{ "enemy": 0, "count": 1, "delay": 2.5, "side": "right" },
-		{ "enemy": 0, "count": 1, "delay": 4.0, "side": "random" }
+		{ "enemy": 0, "count": 4, "delay": 1.0, "side": "top" },
+		#{ "enemy": 0, "count": 1, "delay": 2.5, "side": "left" },
+		#{ "enemy": 0, "count": 1, "delay": 2.5, "side": "right" },
+		#{ "enemy": 0, "count": 1, "delay": 4.0, "side": "random" }
 	]
 
 	if enabled:
@@ -31,15 +32,16 @@ func _process_spawn_list():
 		var count: int = spawn.get("count", 1)
 		var side: String = spawn.get("side", "top")
 		var area := get_spawn_area(side)
+		
+		var y_offset = 0;
 
 		for i in count:
 			var enemy = enemy_scenes[scene_idx].instantiate()
-			var pos = area.position + Vector2(
-				randf_range(0, area.size.x),
-				randf_range(0, area.size.y)
-			)
-			enemy.global_position = pos
+			enemy.position.y += y_offset
+			y_offset += 30
 			enemy_container.add_child(enemy)
+			var curve = path_resources.pick_random()
+			enemy.curve = curve
 
 func get_spawn_area(side: String) -> Rect2:
 	var screen_size = get_viewport().get_visible_rect().size

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/background.gd" id="1_qgja8"]
 [ext_resource type="PackedScene" uid="uid://b21j2qgh8a61t" path="res://Scenes/Components/Enemies/enemy_spawner.tscn" id="1_vl2dv"]
-[ext_resource type="PackedScene" uid="uid://bla5do36sugic" path="res://Scenes/Components/Enemies/types/drone/drone_wave_movement.tscn" id="2_k245a"]
+[ext_resource type="PackedScene" uid="uid://b45of5yft1cwf" path="res://Scenes/Components/Enemies/enemy_template_2.tscn" id="2_qcka5"]
 [ext_resource type="PackedScene" uid="uid://b68kfpa6h3bsw" path="res://Scenes/player_shuttle.tscn" id="3_bskt7"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="4_ebml8"]
 [ext_resource type="Texture2D" uid="uid://cf7klvykclwjb" path="res://Art/Backgrounds/space_background_final2.png" id="5_akqch"]
@@ -10,14 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://cy4idk1urdl8p" path="res://Art/HP & SHIELD/hp_bar_fill_green.png" id="6_8uimc"]
 [ext_resource type="Texture2D" uid="uid://brpd8bywddyh" path="res://Art/HP & SHIELD/hp_bar_fill_red.png" id="7_arbu2"]
 [ext_resource type="PackedScene" uid="uid://d0kdjmwt1u5oq" path="res://Scenes/Components/PowerUP's/powerup.tscn" id="10_b5i1f"]
-[ext_resource type="Texture2D" uid="uid://ddvo2u3ghxi0y" path="res://Art/Backgrounds/UI_background.png" id="10_jl3e3"]
+[ext_resource type="Texture2D" uid="uid://c141ew3ask0qf" path="res://Art/Backgrounds/sidebar_1.png" id="10_r5efg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rfiw0"]
 
 [node name="Game" type="Node2D"]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_vl2dv")]
-enemy_scenes = Array[PackedScene]([ExtResource("2_k245a")])
+enemy_scenes = Array[PackedScene]([ExtResource("2_qcka5")])
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -140,8 +140,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_jl3e3")
-expand_mode = 4
+texture = ExtResource("10_r5efg")
 
 [node name="Game" type="AspectRatioContainer" parent="Camera2D/HUD/Control/HBoxContainer"]
 layout_mode = 2
@@ -160,7 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_jl3e3")
+texture = ExtResource("10_r5efg")
 expand_mode = 4
 
 [node name="Powerup" parent="." instance=ExtResource("10_b5i1f")]
